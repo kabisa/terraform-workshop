@@ -14,7 +14,7 @@ variable "region" {
 /* VPC vars */
 variable "public_subnets" {
   type = "list"
-  default = []
+  default = ["172.16.10.0/24", "172.16.20.0/24"]
 }
 
 variable "azs" {
@@ -25,3 +25,4 @@ variable "azs" {
 /* EC2 vars */
 variable "ec2_type" {}
 variable "ec2_ami" {}
+variable "ec2_keypair" {}

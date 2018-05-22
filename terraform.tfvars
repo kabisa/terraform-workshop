@@ -1,7 +1,6 @@
-/* General vars */
-
-/* VPC vars */
-public_subnets = ["172.16.10.0/24", "172.16.20.0/24"]
+#
+# Define any vars that are user/environment-specific in <something>.auto.tfvars and add it to .gitignore
+#
 
 /* EC2 vars */
 ec2_type = "t2.micro"

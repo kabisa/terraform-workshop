@@ -1,6 +1,7 @@
 resource "aws_instance" "kabisa-demo-instance" {
   ami = "${var.ec2_ami}"
   instance_type = "${var.ec2_type}"
+  key_name = "${var.ec2_keypair}"
   vpc_security_group_ids = ["${aws_security_group.kabisa-demo-sg.id}"]
   subnet_id = "${element(module.vpc.public_subnets, 1)}"
 
