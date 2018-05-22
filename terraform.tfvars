@@ -1,6 +1,4 @@
 /* General vars */
-shared_credentials_file = "~/.aws/credentials"
-profile = "kabisa-aws"
 
 /* VPC vars */
 public_subnets = ["172.16.10.0/24", "172.16.20.0/24"]

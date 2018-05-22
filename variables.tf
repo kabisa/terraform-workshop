@@ -1,6 +1,11 @@
 /* General vars */
-variable "profile" {}
-variable "shared_credentials_file" {}
+variable "profile" {
+  default = "kabisa-demo"
+}
+
+variable "shared_credentials_file" {
+  default = "~/.aws/credentials"
+}
 
 variable "region" {
   default = "eu-west-3"
