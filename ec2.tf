@@ -15,9 +15,9 @@ resource "aws_instance" "kabisa-demo-instance" {
 apt-get update
 apt-get install -y apache2 libapache2-mod-php php-mysql
 wget https://wordpress.org/latest.tar.gz
-tar xpzf latest.tar.gz .
+tar xpzf latest.tar.gz --strip 1 -C /var/www/html/ wordpress
+rm /var/www/index.html
 EOF
-
 }
 
 /* Elastic ip */

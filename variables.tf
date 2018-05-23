@@ -12,9 +12,23 @@ variable "region" {
 }
 
 /* VPC vars */
+variable "cidr" {
+  default = "172.16.0.0/16"
+}
+
 variable "public_subnets" {
   type = "list"
   default = ["172.16.10.0/24", "172.16.20.0/24"]
+}
+
+variable "private_subnets" {
+  type = "list"
+  default = ["172.16.110.0/24", "172.16.120.0/24"]
+}
+
+variable "database_subnets" {
+  type = "list"
+  default = ["172.16.210.0/24", "172.16.220.0/24"]
 }
 
 variable "azs" {
@@ -26,3 +40,10 @@ variable "azs" {
 variable "ec2_type" {}
 variable "ec2_ami" {}
 variable "ec2_keypair" {}
+
+/* RDS vars */
+variable "rds_count" {}
+variable "rds_type" {}
+variable "rds_username" {}
+variable "rds_password" {}
+variable "rds_db" {}

@@ -1,14 +1,14 @@
 #
-# Example of a new security group
+# Example of a new security group that allows
 #
 
 resource "aws_security_group" "kabisa-demo-sg" {
   name = "kabisa-demo-sg"
-  description = "Security Group for our Kabisa Demo"
+  description = "Kabisa Demo Security Group"
   vpc_id = "${module.vpc.vpc_id}"
 }
 
-resource "aws_security_group_rule" "ssh-kabisa-hq" {
+resource "aws_security_group_rule" "kabisa-demo-ssh-hq" {
   type = "ingress"
   from_port = 22
   to_port = 22
@@ -17,7 +17,7 @@ resource "aws_security_group_rule" "ssh-kabisa-hq" {
   security_group_id = "${aws_security_group.kabisa-demo-sg.id}"
 }
 
-resource "aws_security_group_rule" "allow-http" {
+resource "aws_security_group_rule" "kabisa-demo-http" {
   type = "ingress"
   from_port = 80
   to_port = 80
@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "allow-http" {
   security_group_id = "${aws_security_group.kabisa-demo-sg.id}"
 }
 
-resource "aws_security_group_rule" "allow-https" {
+resource "aws_security_group_rule" "kabisa-demo-https" {
   type = "ingress"
   from_port = 443
   to_port = 443
@@ -36,11 +36,30 @@ resource "aws_security_group_rule" "allow-https" {
 }
 
 // Allow all outgoing traffic
-resource "aws_security_group_rule" "egress_all" {
+resource "aws_security_group_rule" "kabisa-demo-egress_all" {
   type              = "egress"
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = "${aws_security_group.kabisa-demo-sg.id}"
+}
+
+#
+# RDS security group
+#
+
+resource "aws_security_group" "kabisa-demo-rds-sg" {
+  name = "kabisa-demo-rds-sg"
+  description = "Kabisa Demo RDS security group"
+  vpc_id = "${module.vpc.vpc_id}"
+}
+
+resource "aws_security_group_rule" "kabisa-demo-rds-mysql" {
+  type = "ingress"
+  from_port = 3306
+  to_port = 3306
+  protocol = "tcp"
+  source_security_group_id = "${aws_security_group.kabisa-demo-sg.id}"
+  security_group_id = "${aws_security_group.kabisa-demo-rds-sg.id}"
 }
