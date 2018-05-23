@@ -43,6 +43,7 @@ resource "aws_db_instance" "kabisa-demo-db" {
   name = "${var.rds_db}"
   allocated_storage = 4
   apply_immediately = true
+  db_subnet_group_name = "${module.vpc.database_subnet_group}"
   vpc_security_group_ids = ["${aws_security_group.kabisa-demo-rds-sg.id}"]
 }
 
