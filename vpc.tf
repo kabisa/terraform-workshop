@@ -8,4 +8,3 @@ module "vpc" {
   database_subnets = "${var.database_subnets}"
   create_database_subnet_group = true
 }
-
