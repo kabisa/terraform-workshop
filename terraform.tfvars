@@ -8,6 +8,6 @@ ec2_ami = "ami-e7cf7e9a"
 
 /* RDS vars */
 rds_count = 2
-rds_type = "db.t2.small"
+rds_type = "db.t2.micro"
 rds_db = "wordpress"
 rds_username = "wordpress"
