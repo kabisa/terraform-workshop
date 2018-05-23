@@ -18,17 +18,17 @@ variable "cidr" {
 
 variable "public_subnets" {
   type = "list"
-  default = ["172.16.10.0/24", "172.16.20.0/24"]
+  default = ["172.16.10.0/24", "172.16.20.0/24", "172.16.30.0/24"]
 }
 
 variable "private_subnets" {
   type = "list"
-  default = ["172.16.110.0/24", "172.16.120.0/24"]
+  default = ["172.16.110.0/24", "172.16.120.0/24", "172.16.130.0/24"]
 }
 
 variable "database_subnets" {
   type = "list"
-  default = ["172.16.210.0/24", "172.16.220.0/24"]
+  default = ["172.16.210.0/24", "172.16.220.0/24", "172.16.230.0/24"]
 }
 
 variable "azs" {
