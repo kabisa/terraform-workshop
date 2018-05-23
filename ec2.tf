@@ -16,7 +16,8 @@ apt-get update
 apt-get install -y apache2 libapache2-mod-php php-mysql
 wget https://wordpress.org/latest.tar.gz
 tar xpzf latest.tar.gz --strip 1 -C /var/www/html/ wordpress
-rm /var/www/index.html
+rm /var/www/html/index.html
+chown -R www-data:www-data /var/www/html/
 EOF
 }
 
