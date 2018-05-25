@@ -44,22 +44,3 @@ resource "aws_security_group_rule" "kabisa-demo-egress_all" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = "${aws_security_group.kabisa-demo-sg.id}"
 }
-
-#
-# RDS security group
-#
-
-resource "aws_security_group" "kabisa-demo-rds-sg" {
-  name = "kabisa-demo-rds-sg"
-  description = "Kabisa Demo RDS security group"
-  vpc_id = "${module.vpc.vpc_id}"
-}
-
-resource "aws_security_group_rule" "kabisa-demo-rds-mysql" {
-  type = "ingress"
-  from_port = 3306
-  to_port = 3306
-  protocol = "tcp"
-  source_security_group_id = "${aws_security_group.kabisa-demo-sg.id}"
-  security_group_id = "${aws_security_group.kabisa-demo-rds-sg.id}"
-}
