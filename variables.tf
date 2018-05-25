@@ -30,18 +30,3 @@ variable "azs" {
   type = "list"
   default = ["eu-west-3a", "eu-west-3b", "eu-west-3c"]
 }
-
-/* EC2 vars */
-variable "ec2_type" {}
-variable "ec2_ami" {}
-variable "ec2_keypair" {}
-
-/* RDS vars */
-variable "rds_count" {}
-variable "rds_type" {}
-variable "rds_username" {}
-variable "rds_password" {}
-variable "rds_db" {}
-variable "rds_storage" {
-  default = 20
-}
