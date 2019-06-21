@@ -1,5 +1,6 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "~> 1.66"
   name = "kabisa-demo"
   cidr = "${var.cidr}"
   azs = "${var.azs}"
