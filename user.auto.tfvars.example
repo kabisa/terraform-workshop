@@ -1,0 +1,3 @@
+team            = ""
+public_key      = ""
+ssh_cidr_blocks = ["127.0.0.1/32"]
