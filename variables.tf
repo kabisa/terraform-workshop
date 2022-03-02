@@ -1,20 +1,10 @@
-/* General vars */
-variable "profile" {
-  type    = string
-  default = "kabisa-demo"
-}
-
-variable "shared_credentials_file" {
-  type    = string
-  default = "~/.aws/credentials"
-}
-
+# General
 variable "region" {
   type    = string
   default = "eu-west-3"
 }
 
-/* VPC vars */
+# VPC
 variable "cidr" {
   type    = string
   default = "172.16.0.0/16"
@@ -33,4 +23,13 @@ variable "database_subnets" {
 variable "azs" {
   type    = list(string)
   default = ["eu-west-3a", "eu-west-3b", "eu-west-3c"]
+}
+
+# EC2
+variable "ec2_instance_type" {
+  type = string
+}
+
+variable "ec2_instance_ami" {
+  type = string
 }
