@@ -13,6 +13,26 @@ resource "aws_security_group_rule" "ssh" {
   protocol    = "tcp"
 }
 
+resource "aws_security_group_rule" "http" {
+  security_group_id = aws_security_group.instances.id
+
+  type        = "ingress"
+  from_port   = 80
+  to_port     = 80
+  cidr_blocks = ["0.0.0.0/0"]
+  protocol    = "tcp"
+}
+
+resource "aws_security_group_rule" "https" {
+  security_group_id = aws_security_group.instances.id
+
+  type        = "ingress"
+  from_port   = 443
+  to_port     = 443
+  cidr_blocks = ["0.0.0.0/0"]
+  protocol    = "tcp"
+}
+
 resource "aws_security_group_rule" "egress_all" {
   security_group_id = aws_security_group.instances.id
 
