@@ -1,3 +1,3 @@
-output "ip" {
-  value = aws_eip.this.public_ip
+output "ips" {
+  value = aws_eip.this.*.public_ip
 }

@@ -8,7 +8,7 @@ cat <<- EOF > /opt/bitnami/nginx/html/index.html
   </head>
   <body>
     <h1>Hello, PXL</h1>
-    <p>This server was set up by team ${team}</p>
+    <p>This server was set up by team ${team} from instance ${instance}</p>
   </body>
 </html>
 EOF

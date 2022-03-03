@@ -4,14 +4,17 @@ resource "aws_key_pair" "this" {
 }
 
 data "template_file" "user_data" {
+  count    = local.instance_count
   template = file("templates/user_data.sh.tpl")
 
   vars = {
-    team = var.team
+    team     = var.team
+    instance = count.index
   }
 }
 
 resource "aws_instance" "this" {
+  count         = local.instance_count
   ami           = var.ec2_ami
   instance_type = var.ec2_instance_type
 
@@ -19,7 +22,7 @@ resource "aws_instance" "this" {
   subnet_id              = module.vpc.public_subnets[0]
   key_name               = aws_key_pair.this.key_name
 
-  user_data = data.template_file.user_data.rendered
+  user_data = data.template_file.user_data[count.index].rendered
 
   root_block_device {
     volume_type = "gp2"
@@ -28,10 +31,12 @@ resource "aws_instance" "this" {
 }
 
 resource "aws_eip" "this" {
-  vpc = true
+  count = local.instance_count
+  vpc   = true
 }
 
 resource "aws_eip_association" "this" {
-  instance_id   = aws_instance.this.id
-  allocation_id = aws_eip.this.id
+  count         = local.instance_count
+  instance_id   = aws_instance.this[count.index].id
+  allocation_id = aws_eip.this[count.index].id
 }
