@@ -1,0 +1,4 @@
+team = "needed-platypus"
+
+ssh_cidr_blocks = ["127.0.0.1/32"]
+public_key      = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFu3kxSlvxYmUta5XUxJg4iwqlTcsXO9fhsMU7FzE5Z1"

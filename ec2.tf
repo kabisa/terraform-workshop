@@ -13,16 +13,33 @@ data "aws_ami" "generic" {
   }
 }
 
+
+resource "aws_key_pair" "this" {
+  key_name   = var.team
+  public_key = var.public_key
+}
+
+resource "template_file" "user_data" {
+  template = file("templates/user_data.sh.tpl")
+
+  vars = {
+    team = var.team
+  }
+}
+
 resource "aws_instance" "this" {
-  ami           = data.aws_ami.generic.id
+  ami           = "ami-013e1af9930f63942"
   instance_type = var.ec2_instance_type
 
-  vpc_security_group_ids = [aws_security_group.this.id]
+  vpc_security_group_ids = [aws_security_group.instances.id]
   subnet_id              = module.vpc.public_subnets[0]
+  key_name               = aws_key_pair.this.key_name
+
+  user_data = template_file.user_data.rendered
 
   root_block_device {
     volume_type = "gp2"
-    volume_size = 8
+    volume_size = 16
   }
 }
 

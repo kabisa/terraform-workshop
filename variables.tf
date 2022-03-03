@@ -25,6 +25,18 @@ variable "azs" {
   default = ["eu-west-3a", "eu-west-3b", "eu-west-3c"]
 }
 
+variable "team" {
+  type = string
+}
+
+variable "ssh_cidr_blocks" {
+  type = list(string)
+}
+
+variable "public_key" {
+  type = string
+}
+
 # EC2
 variable "ec2_instance_type" {
   type = string
@@ -32,4 +44,22 @@ variable "ec2_instance_type" {
 
 variable "ec2_instance_ami" {
   type = string
+}
+
+# RDS
+variable "rds_instance_type" {
+  type = string
+}
+
+variable "rds_username" {
+  type = string
+}
+
+variable "rds_db_name" {
+  type = string
+}
+
+variable "rds_storage" {
+  type    = number
+  default = 10
 }
