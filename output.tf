@@ -1,3 +1,3 @@
-output "ips" {
-  value = aws_eip.this.*.public_ip
+output "alb_dns_name" {
+  value = aws_lb.this.dns_name
 }
